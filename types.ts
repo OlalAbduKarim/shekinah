@@ -1,31 +1,37 @@
 
-export interface Sermon {
-  id: number;
-  title: string;
-  speaker: string;
-  date: string;
-  thumbnailUrl: string;
-  videoUrl: string;
-}
-
-export interface Event {
-  id: number;
-  title: string;
-  dateTime: string; // Changed from date and time to a single ISO-like string
-  location: string;
-  description: string;
-  imageUrl: string;
-}
-
-export interface LeadershipMember {
+export interface TeamMember {
   name: string;
   role: string;
   bio: string;
   imageUrl: string;
 }
 
-export interface Devotional {
+export interface Sermon {
   title: string;
-  scripture: string;
-  body: string;
+  speaker: string;
+  date: string;
+  videoId: string; // YouTube video ID
+}
+
+export interface Event {
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+  imageUrl: string;
+}
+
+export interface Devotional {
+    title: string;
+    author: string;
+    date: string;
+    excerpt: string;
+    imageUrl: string;
+}
+
+export interface GalleryImage {
+    id: number;
+    src: string;
+    alt: string;
 }

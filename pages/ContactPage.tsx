@@ -1,105 +1,119 @@
+
 import React, { useState } from 'react';
-import PageWrapper from '../components/PageWrapper';
-import { Mail, Phone, MapPin } from 'lucide-react';
-import { useSeo } from '../hooks/useSeo';
+import { CONTACT_INFO } from '../constants';
 
-const ContactForm: React.FC = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-    const [status, setStatus] = useState('');
+const PageHeader = () => (
+    <div className="relative h-64 bg-sg-purple flex items-center justify-center text-white text-center">
+        <div className="absolute inset-0 bg-black opacity-30"></div>
+        <img src="https://picsum.photos/id/40/1200/400" alt="Phone and keyboard" className="w-full h-full object-cover"/>
+        <div className="relative z-10">
+            <h1 className="text-5xl font-serif font-bold">Get In Touch</h1>
+            <p className="text-xl mt-2">We'd love to hear from you.</p>
+        </div>
+    </div>
+);
 
+const ContactForm: React.FC<{title: string; isPrayerRequest?: boolean}> = ({ title, isPrayerRequest = false }) => {
+    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
+    
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setStatus('Sending...');
-        // Simulate form submission
-        setTimeout(() => {
-            setStatus(`Thank you, ${formData.name}. Your message has been sent!`);
-            setFormData({ name: '', email: '', message: '' });
-            setTimeout(() => setStatus(''), 5000); // Clear status after 5 seconds
-        }, 1500);
+        // Here you would connect to a backend service like Firebase or an email API
+        console.log('Form Submitted:', formData);
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
     };
 
+    if (isSubmitted) {
+        return <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md" role="alert">
+            <p className="font-bold">Thank You!</p>
+            <p>{isPrayerRequest ? "Your prayer request has been received. Our team will be praying for you." : "Your message has been sent. We will get back to you shortly."}</p>
+        </div>
+    }
+
     return (
-        <section className="bg-brand-card p-8 rounded-lg shadow-lg" aria-labelledby="form-title">
-            <h2 id="form-title" className="text-2xl font-bold font-serif text-brand-dark mb-6">Send Us a Message</h2>
+        <div className="bg-white p-8 rounded-lg shadow-xl">
+            <h3 className="text-3xl font-serif font-bold text-sg-purple mb-6">{title}</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sg-gold focus:border-sg-gold" />
+                    </div>
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sg-gold focus:border-sg-gold" />
+                    </div>
+                </div>
+                {!isPrayerRequest && (
                 <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-brand-text-muted">Full Name</label>
-                    <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} autoComplete="name" className="mt-1 block w-full bg-gray-800 border-gray-600 text-white rounded-md shadow-sm focus:ring-brand-gold focus:border-brand-gold" />
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700">Subject</label>
+                    <input type="text" name="subject" id="subject" required value={formData.subject} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sg-gold focus:border-sg-gold" />
+                </div>
+                )}
+                <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">{isPrayerRequest ? "Your Prayer Request" : "Message"}</label>
+                    <textarea name="message" id="message" rows={5} required value={formData.message} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-sg-gold focus:border-sg-gold"></textarea>
                 </div>
                 <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-brand-text-muted">Email Address</label>
-                    <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} autoComplete="email" className="mt-1 block w-full bg-gray-800 border-gray-600 text-white rounded-md shadow-sm focus:ring-brand-gold focus:border-brand-gold" />
-                </div>
-                <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-brand-text-muted">Message</label>
-                    <textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} className="mt-1 block w-full bg-gray-800 border-gray-600 text-white rounded-md shadow-sm focus:ring-brand-gold focus:border-brand-gold"></textarea>
-                </div>
-                <div>
-                    <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-brand-blue bg-brand-gold hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+                    <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-sg-purple hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sg-purple transition-colors duration-300">
                         Submit
                     </button>
                 </div>
-                {status && <p className="text-center text-green-400 mt-4" role="status">{status}</p>}
             </form>
-        </section>
+        </div>
     );
-};
-
+}
 
 const ContactPage: React.FC = () => {
-  useSeo({
-      title: 'Contact Us',
-      description: 'Get in touch with Shekinah Glory Worship Center. Find our address in Kampala, phone number, email, and a map to our location. We look forward to hearing from you.',
-      path: '/contact'
-  });
+    return (
+        <div className="bg-sg-light">
+            <PageHeader />
+            <section className="py-20">
+                <div className="container mx-auto px-6">
+                    <div className="grid lg:grid-cols-2 gap-16 items-start">
+                        {/* Contact Info and Map */}
+                        <div className="space-y-12">
+                            <div>
+                                <h3 className="text-3xl font-serif font-bold text-sg-purple mb-6">Our Location</h3>
+                                <div className="space-y-4 text-gray-700 text-lg">
+                                    <p className="flex items-center"><span className="text-sg-gold mr-3">📍</span>{CONTACT_INFO.address}</p>
+                                    <p className="flex items-center"><span className="text-sg-gold mr-3">📧</span><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-sg-purple">{CONTACT_INFO.email}</a></p>
+                                    <p className="flex items-center"><span className="text-sg-gold mr-3">📞</span><a href={`tel:${CONTACT_INFO.phone}`} className="hover:text-sg-purple">{CONTACT_INFO.phone}</a></p>
+                                    <a href={`https://wa.me/${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors">
+                                        <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19.11 4.9L17.7 3.49C14.89 1.13 10.28.93 7.03 3.32c-3.1 2.29-4.22 6.24-2.88 9.71l-1.92 6.95l7.13-1.89c3.41 1.48 7.54.49 10.03-2.48c2.81-3.37 2.49-8.49-.68-11.21zM12.11 18.05c-1.27 0-2.52-.36-3.6-1.03l-4.4 1.17l1.19-4.28c-.8-1.15-1.25-2.5-1.25-3.92c0-4.32 3.51-7.83 7.83-7.83c2.09 0 4.05.81 5.54 2.3c2.25 2.25 2.62 5.92.93 8.64c-1.21 1.95-3.4 3.12-5.74 3.12z"/></svg>
+                                        Chat on WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="h-96 rounded-lg overflow-hidden shadow-lg">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.219579007469!2d-73.98785368459368!3d40.75713497932696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c64801b7%3A0x6d36c534ad5553e1!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1616422205102!5m2!1sen!2sus"
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen={true}
+                                    loading="lazy"
+                                    title="Church Location"
+                                ></iframe>
+                            </div>
+                        </div>
 
-  return (
-    <PageWrapper className="bg-brand-beige">
-       <section className="text-center" aria-labelledby="contact-page-title">
-            <h1 id="contact-page-title" className="text-4xl font-bold font-serif text-brand-dark">Get In Touch</h1>
-            <p className="mt-4 text-xl text-brand-text-muted max-w-3xl mx-auto">We'd love to hear from you. Whether you have a question, a prayer request, or just want to say hello, please reach out.</p>
-        </section>
-        
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
-            <ContactForm />
-            <section className="space-y-8" aria-labelledby="contact-info-title">
-                 <h2 id="contact-info-title" className="sr-only">Contact Information</h2>
-                 <div className="bg-brand-card p-6 rounded-lg shadow-md">
-                     <h3 className="text-xl font-semibold font-serif text-brand-dark flex items-center"><MapPin className="mr-3 h-6 w-6 text-brand-gold" />Our Location</h3>
-                     <p className="mt-2 text-brand-text-muted">Komamboga-Kisamba Road, Kampala, Uganda</p>
-                 </div>
-                 <div className="bg-brand-card p-6 rounded-lg shadow-md">
-                     <h3 className="text-xl font-semibold font-serif text-brand-dark flex items-center"><Phone className="mr-3 h-6 w-6 text-brand-gold" />Phone</h3>
-                     <a href="tel:+256772450351" className="mt-2 text-brand-text-muted hover:text-brand-gold">+256 772 450 351</a>
-                 </div>
-                 <div className="bg-brand-card p-6 rounded-lg shadow-md">
-                     <h3 className="text-xl font-semibold font-serif text-brand-dark flex items-center"><Mail className="mr-3 h-6 w-6 text-brand-gold" />Email</h3>
-                     <a href="mailto:contact@shekinahglory.ug" className="mt-2 text-brand-text-muted hover:text-brand-gold">contact@shekinahglory.ug</a>
-                 </div>
+                        {/* Forms */}
+                        <div className="space-y-12">
+                            <ContactForm title="Send Us a Message" />
+                            <ContactForm title="Submit a Prayer Request" isPrayerRequest={true} />
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
-
-        <section className="mt-12" aria-labelledby="find-us-title">
-            <h2 id="find-us-title" className="text-3xl font-bold font-serif text-brand-dark text-center mb-6">Find Us</h2>
-            <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
-                <iframe
-                    className="filter invert(1) hue-rotate(180deg)"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255348.2163945417!2d32.45842107382811!3d0.3134371701383503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb852571241d%3A0x452c3c6f35957388!2sKampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1675797375217!5m2!1sen!2sus"
-                    width="100%"
-                    height="450"
-                    style={{ border: 0 }}
-                    allowFullScreen={true}
-                    loading="lazy"
-                    title="Map showing the location of Shekinah Glory Worship Center in Kampala, Uganda"
-                ></iframe>
-            </div>
-        </section>
-    </PageWrapper>
-  );
+    );
 };
 
 export default ContactPage;

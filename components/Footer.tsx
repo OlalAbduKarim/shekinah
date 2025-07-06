@@ -1,114 +1,61 @@
+
 import React from 'react';
-import * as ReactRouterDom from 'react-router-dom';
-import { Facebook, Twitter, Youtube, Instagram } from 'lucide-react';
-import StructuredData from './StructuredData';
+import { Link } from 'react-router-dom';
+import { NAV_LINKS, SOCIAL_LINKS, CONTACT_INFO } from '../constants';
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = React.useState('');
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Thank you for subscribing with ${email}!`);
-    setEmail('');
-  };
-
-  const churchSchema = {
-    "@context": "https://schema.org",
-    "@type": "Church",
-    "name": "Shekinah Glory Worship Center",
-    "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Komamboga-Kisamba Road",
-        "addressLocality": "Kampala",
-        "addressCountry": "UG"
-    },
-    "telephone": "+256772450351",
-    "email": "contact@shekinahglory.ug",
-    "url": "https://shekinahglory.ug", // A placeholder URL
-    "openingHoursSpecification": [
-        {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [ "Sunday" ],
-            "opens": "08:00",
-            "closes": "12:30"
-        },
-        {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [ "Wednesday" ],
-            "opens": "18:00",
-            "closes": "20:00"
-        },
-        {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [ "Friday" ],
-            "opens": "20:00"
-        }
-    ],
-    "image": "https://picsum.photos/seed/logo/512/512" // Placeholder logo
-  };
-
   return (
-    <footer className="bg-brand-blue text-white font-sans">
-      <StructuredData data={churchSchema} />
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-sg-purple text-white font-sans">
+      <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* About Section */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-brand-gold font-serif">Shekinah Glory Worship Center</h3>
-            <p className="text-gray-300 text-sm">A place of hope, healing, and restoration. Join us as we grow in faith and serve our community.</p>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com/shekinahglorykampala" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-brand-gold" aria-label="Facebook"><Facebook size={20}/></a>
-              <a href="https://twitter.com/shekinahgloryug" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-brand-gold" aria-label="Twitter"><Twitter size={20}/></a>
-              <a href="https://youtube.com/shekinahgloryworshipcenter" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-brand-gold" aria-label="YouTube"><Youtube size={20}/></a>
-              <a href="https://instagram.com/shekinahglorykampala" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-brand-gold" aria-label="Instagram"><Instagram size={20}/></a>
+          
+          <div>
+            <h3 className="text-xl font-serif font-bold text-sg-gold mb-4">Shekinah Glory</h3>
+            <p className="text-gray-300">Experiencing His Presence, Extending His Love.</p>
+             <div className="flex space-x-4 mt-6">
+              <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sg-gold transition-colors duration-300">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" /></svg>
+              </a>
+              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sg-gold transition-colors duration-300">
+                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.78 22 12 22 12s0 3.22-.42 4.814a2.506 2.506 0 0 1-1.768 1.768c-1.594.42-7.812.42-7.812.42s-6.218 0-7.812-.42a2.506 2.506 0 0 1-1.768-1.768C2 15.22 2 12 2 12s0-3.22.42-4.814a2.506 2.506 0 0 1 1.768-1.768C5.782 5 12 5 12 5s6.218 0 7.812.418ZM15.197 12 10 9.14v5.72L15.197 12Z" clipRule="evenodd" /></svg>
+              </a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-sg-gold transition-colors duration-300">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 0 1 1.772 1.153 4.902 4.902 0 0 1 1.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 0 1-1.153 1.772 4.902 4.902 0 0 1-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 0 1-1.772-1.153 4.902 4.902 0 0 1-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 0 1 1.153-1.772A4.902 4.902 0 0 1 6.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2ZM12 7.044a4.956 4.956 0 1 0 0 9.912 4.956 4.956 0 0 0 0-9.912ZM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm4.846-8.19a1.202 1.202 0 1 1 2.404 0 1.202 1.202 0 0 1-2.404 0Z" clipRule="evenodd" /></svg>
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-brand-gold font-serif">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
-              <li><ReactRouterDom.NavLink to="/about" className="text-gray-300 hover:text-brand-gold">About Us</ReactRouterDom.NavLink></li>
-              <li><ReactRouterDom.NavLink to="/livestream" className="text-gray-300 hover:text-brand-gold">Sermons</ReactRouterDom.NavLink></li>
-              <li><ReactRouterDom.NavLink to="/events" className="text-gray-300 hover:text-brand-gold">Events</ReactRouterDom.NavLink></li>
-              <li><ReactRouterDom.NavLink to="/give" className="text-gray-300 hover:text-brand-gold">Give</ReactRouterDom.NavLink></li>
-              <li><ReactRouterDom.NavLink to="/sitemap" className="text-gray-300 hover:text-brand-gold">Sitemap</ReactRouterDom.NavLink></li>
+          <div>
+            <h3 className="text-xl font-serif font-bold text-sg-gold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {NAV_LINKS.map(link => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-gray-300 hover:text-sg-gold transition-colors duration-300">{link.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-xl font-serif font-bold text-sg-gold mb-4">Contact Us</h3>
+            <ul className="space-y-2 text-gray-300">
+                <li className="flex items-center space-x-2"><span>📍</span><span>{CONTACT_INFO.address}</span></li>
+                <li className="flex items-center space-x-2"><span>📞</span><a href={`tel:${CONTACT_INFO.phone}`} className="hover:text-sg-gold">{CONTACT_INFO.phone}</a></li>
+                <li className="flex items-center space-x-2"><span>📧</span><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-sg-gold">{CONTACT_INFO.email}</a></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-brand-gold font-serif">Contact Us</h3>
-            <address className="not-italic text-sm text-gray-300 space-y-2">
-              <p>Komamboga-Kisamba Road, Kampala, Uganda</p>
-              <p>Email: <a href="mailto:contact@shekinahglory.ug" className="hover:text-brand-gold">contact@shekinahglory.ug</a></p>
-              <p>Phone: <a href="tel:+256772450351" className="hover:text-brand-gold">+256 772 450 351</a></p>
-            </address>
+          <div>
+            <h3 className="text-xl font-serif font-bold text-sg-gold mb-4">Service Times</h3>
+            <ul className="space-y-2 text-gray-300">
+                <li><strong>Sunday Worship:</strong> 10:00 AM</li>
+                <li><strong>Wednesday Bible Study:</strong> 7:00 PM</li>
+                <li><strong>Friday Prayer Meeting:</strong> 8:00 PM</li>
+            </ul>
           </div>
-          
-          {/* Newsletter */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-brand-gold font-serif">Join Our Newsletter</h3>
-            <p className="text-gray-300 text-sm">Stay updated with our latest news and events.</p>
-            <form onSubmit={handleNewsletterSubmit} className="flex">
-              <label htmlFor="newsletter-email" className="sr-only">Email for newsletter</label>
-              <input 
-                id="newsletter-email"
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email address" 
-                className="w-full px-3 py-2 text-white bg-gray-800 border-gray-600 rounded-l-md focus:outline-none focus:ring-2 focus:ring-brand-gold placeholder-gray-400" 
-                required
-              />
-              <button type="submit" className="px-4 py-2 bg-brand-gold text-brand-blue font-semibold rounded-r-md hover:bg-amber-400">
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+        </div>
+        <div className="mt-12 border-t border-gray-700 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} Shekinah Glory Worship Center. All Rights Reserved.</p>
         </div>
       </div>

@@ -1,168 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO Meta Tags -->
     <title>Shekinah Glory Worship Center</title>
-    <meta name="description" content="A place of hope, healing, and discovering your purpose in Christ in Kampala, Uganda. Join Shekinah Glory Worship Center for services, events, and community.">
-    <link rel="canonical" href="https://[YOUR-WEBSITE-URL-HERE].com" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Shekinah Glory Worship Center">
-    <meta property="og:description" content="A place of hope, healing, and discovering your purpose in Christ in Kampala, Uganda.">
-    <meta property="og:image" content="https://picsum.photos/seed/worship/1200/630">
-    <meta property="og:url" content="https://[YOUR-WEBSITE-URL-HERE].com">
-    <meta property="og:site_name" content="Shekinah Glory Worship Center">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shekinah Glory Worship Center">
-    <meta name="twitter:description" content="A place of hope, healing, and discovering your purpose in Christ in Kampala, Uganda.">
-    <meta name="twitter:image" content="https://picsum.photos/seed/worship/1200/630">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'brand-blue': '#0F172A', // Header/Footer bg - WAS #1a2a4c
-              'brand-gold': '#AF6C00', // Accent - stays the same
-              'brand-beige': '#121212', // Main background - WAS #FAF9F6
-              'brand-dark': '#E5E7EB',  // Main text color - WAS #1E293B
-              'brand-card': '#1F2937',  // Card background - NEW
-              'brand-text-muted': '#9CA3AF', // Muted text - NEW
+              'sg-purple': '#4a0e63', // A deep, majestic purple
+              'sg-gold': '#FFD700',   // A rich, warm gold
+              'sg-light': '#f8f7fa', // A very light, almost white lavender for backgrounds
             },
             fontFamily: {
-              'serif': ['Lora', 'serif'],
-              'sans': ['Montserrat', 'sans-serif'],
+              sans: ['"Open Sans"', 'sans-serif'],
+              serif: ['"Playfair Display"', 'serif'],
             }
           }
         }
       }
     </script>
-    <style>
-      /* Custom scrollbar for a more elegant look */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #2d3748; /* dark track */
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #4a5568; /* slightly lighter thumb */
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #718096; /* lighter on hover */
-      }
-
-      /* High Contrast Mode - Black & Yellow theme */
-      .high-contrast {
-        --hc-bg: #000000;
-        --hc-text: #ffffff;
-        --hc-accent: #FFFF00; /* Vivid Yellow */
-        --hc-border: #ffffff;
-      }
-
-      /* Base overrides for a consistent dark theme */
-      .high-contrast,
-      .high-contrast body,
-      .high-contrast [class*="bg-"] {
-        background-color: var(--hc-bg) !important;
-      }
-
-      /* Universal text color */
-      .high-contrast [class*="text-"] {
-        color: var(--hc-text) !important;
-      }
-
-      /* Links and accents become yellow for high visibility */
-      .high-contrast a,
-      .high-contrast .text-brand-gold,
-      .high-contrast a:hover,
-      .high-contrast button:hover .text-white, /* For accessibility buttons */
-      .high-contrast .hover\:text-brand-gold:hover,
-      .high-contrast .group-hover\:text-brand-gold,
-      .high-contrast [class*="text-amber-"] {
-        color: var(--hc-accent) !important;
-      }
-
-      /* Buttons */
-      .high-contrast .bg-brand-gold {
-        background-color: var(--hc-accent) !important;
-        color: var(--hc-bg) !important; /* Black text on yellow button */
-      }
-      .high-contrast .hover\:bg-amber-400:hover {
-        background-color: #e6e600 !important; /* Slightly darker yellow on hover */
-      }
-      .high-contrast .text-brand-blue {
-        color: var(--hc-bg) !important;
-      }
-      
-      /* Borders */
-      .high-contrast [class*="border"],
-      .high-contrast [class*="border-"] {
-        border-color: var(--hc-border) !important;
-      }
-
-      /* Forms */
-      .high-contrast input,
-      .high-contrast textarea,
-      .high-contrast select {
-        background-color: var(--hc-bg) !important;
-        color: var(--hc-text) !important;
-        border-color: var(--hc-border) !important;
-      }
-      .high-contrast ::-webkit-input-placeholder { color: #bbbbbb !important; }
-      .high-contrast :-moz-placeholder { color: #bbbbbb !important; opacity: 1; }
-      .high-contrast ::-moz-placeholder { color: #bbbbbb !important; opacity: 1; }
-      .high-contrast :-ms-input-placeholder { color: #bbbbbb !important; }
-      .high-contrast ::-ms-input-placeholder { color: #bbbbbb !important; }
-      .high-contrast ::placeholder { color: #bbbbbb !important; }
-
-      .high-contrast .focus\:ring-brand-gold:focus,
-      .high-contrast .ring-2.ring-brand-gold {
-        --tw-ring-color: var(--hc-accent) !important;
-      }
-      .high-contrast .focus\:border-brand-gold:focus {
-        border-color: var(--hc-accent) !important;
-      }
-
-      /* Map filter */
-      .high-contrast .filter.invert\(1\).hue-rotate\(180deg\) {
-          filter: grayscale(1) invert(1) !important;
-      }
-
-      /* Remove visual noise */
-      .high-contrast [class*="shadow-"],
-      .high-contrast .drop-shadow-lg {
-        box-shadow: none !important;
-        filter: none !important;
-      }
-
-      .high-contrast .opacity-50,
-      .high-contrast [class*="bg-opacity-"] {
-        opacity: 1 !important;
-        background-color: transparent !important;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.1.0",
     "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
     "react/": "https://esm.sh/react@^19.1.0/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.525.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.7.0"
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.3"
   }
 }
 </script>
@@ -170,6 +40,6 @@
 </head>
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

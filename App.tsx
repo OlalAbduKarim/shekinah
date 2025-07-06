@@ -1,54 +1,49 @@
+
 import React from 'react';
-import * as ReactRouterDom from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import LivestreamPage from './pages/LivestreamPage';
+import SermonsPage from './pages/SermonsPage';
+import MediaPage from './pages/MediaPage';
 import EventsPage from './pages/EventsPage';
-import GivingPage from './pages/GivingPage';
-import DevotionalsPage from './pages/DevotionalsPage';
+import GivePage from './pages/GivePage';
+import DevotionsPage from './pages/DevotionsPage';
 import ContactPage from './pages/ContactPage';
-import PrayerRequestPage from './pages/PrayerRequestPage';
-import SitemapPage from './pages/SitemapPage';
-import { AccessibilityProvider } from './context/AccessibilityContext';
+import NewsletterPopup from './components/NewsletterPopup';
+import Chatbox from './components/Chatbox';
+import useScrollToTop from './hooks/useScrollToTop';
 
-const PageContent = () => {
-  const location = ReactRouterDom.useLocation();
-
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  return (
-    <main className="flex-grow">
-      <ReactRouterDom.Routes>
-        <ReactRouterDom.Route path="/" element={<HomePage />} />
-        <ReactRouterDom.Route path="/about" element={<AboutPage />} />
-        <ReactRouterDom.Route path="/livestream" element={<LivestreamPage />} />
-        <ReactRouterDom.Route path="/events" element={<EventsPage />} />
-        <ReactRouterDom.Route path="/give" element={<GivingPage />} />
-        <ReactRouterDom.Route path="/devotionals" element={<DevotionalsPage />} />
-        <ReactRouterDom.Route path="/contact" element={<ContactPage />} />
-        <ReactRouterDom.Route path="/prayer" element={<PrayerRequestPage />} />
-        <ReactRouterDom.Route path="/sitemap" element={<SitemapPage />} />
-      </ReactRouterDom.Routes>
-    </main>
-  );
-};
-
+const AppContent: React.FC = () => {
+    useScrollToTop();
+    return (
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/sermons" element={<SermonsPage />} />
+            <Route path="/media" element={<MediaPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/give" element={<GivePage />} />
+            <Route path="/devotions" element={<DevotionsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+    );
+}
 
 const App: React.FC = () => {
   return (
-    <AccessibilityProvider>
-      <ReactRouterDom.HashRouter>
-        <div className="flex flex-col min-h-screen bg-brand-beige text-brand-dark font-sans">
-          <Header />
-          <PageContent />
-          <Footer />
-        </div>
-      </ReactRouterDom.HashRouter>
-    </AccessibilityProvider>
+    <HashRouter>
+      <div className="bg-sg-light font-sans text-gray-800">
+        <Header />
+        <main className="pt-20"> {/* Padding to offset fixed header */}
+          <AppContent />
+        </main>
+        <Footer />
+        <NewsletterPopup />
+        <Chatbox />
+      </div>
+    </HashRouter>
   );
 };
 

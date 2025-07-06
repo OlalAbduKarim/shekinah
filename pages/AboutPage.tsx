@@ -1,102 +1,112 @@
 
 import React from 'react';
-import PageWrapper from '../components/PageWrapper';
-import { LEADERSHIP_TEAM } from '../constants';
-import { LeadershipMember } from '../types';
-import { useSeo } from '../hooks/useSeo';
-import StructuredData from '../components/StructuredData';
+import { MOCK_LEADERSHIP_TEAM } from '../constants';
+import { TeamMember } from '../types';
 
-const PastorMessage: React.FC<{ member: LeadershipMember }> = ({ member }) => (
-    <section className="bg-brand-card rounded-xl shadow-xl overflow-hidden my-12" aria-labelledby="bishop-message-title">
-        <div className="md:flex">
-            <div className="md:flex-shrink-0">
-                <img className="h-full w-full object-cover md:w-64" src={member.imageUrl} alt={member.name} />
-            </div>
-            <div className="p-8">
-                <div id="bishop-message-title" className="uppercase tracking-wide text-sm text-brand-gold font-semibold font-sans">A Message from our Bishop</div>
-                <h2 className="block mt-1 text-2xl leading-tight font-bold font-serif text-brand-dark">{member.name}</h2>
-                <p className="mt-4 text-brand-text-muted">{member.bio}</p>
-                <p className="mt-4 text-brand-dark font-serif italic">"We are so glad you're here. At Shekinah Glory, our doors and hearts are always open. We pray you find a home with us."</p>
+const PageHeader = () => (
+    <div className="relative h-64 bg-sg-purple flex items-center justify-center text-white text-center">
+        <div className="absolute inset-0 bg-black opacity-30"></div>
+        <img src="https://picsum.photos/id/111/1200/400" alt="Church interior" className="w-full h-full object-cover"/>
+        <div className="relative z-10">
+            <h1 className="text-5xl font-serif font-bold">About Us</h1>
+            <p className="text-xl mt-2">Our Mission, Vision, and Leadership</p>
+        </div>
+    </div>
+);
+
+const MissionVision: React.FC = () => (
+    <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+            <div className="grid md:grid-cols-2 gap-16">
+                <div className="text-center md:text-left">
+                    <h2 className="text-3xl font-serif font-bold text-sg-purple mb-4">Our Mission</h2>
+                    <p className="text-gray-600 leading-relaxed">To create an atmosphere where people can experience the tangible presence of God (Shekinah Glory), be transformed by His Word, and empowered to fulfill their divine purpose.</p>
+                </div>
+                <div className="text-center md:text-left">
+                    <h2 className="text-3xl font-serif font-bold text-sg-purple mb-4">Our Vision</h2>
+                    <p className="text-gray-600 leading-relaxed">To be a global ministry that raises leaders, impacts communities, and reveals the love and power of Jesus Christ to all nations.</p>
+                </div>
             </div>
         </div>
     </section>
 );
 
-const LeadershipCard: React.FC<{ member: LeadershipMember }> = ({ member }) => (
-    <article className="bg-brand-card rounded-lg shadow-lg text-center p-6 transform hover:scale-105 transition-transform duration-300">
-        <img className="w-32 h-32 rounded-full mx-auto" src={member.imageUrl} alt={member.name} />
-        <h3 className="mt-4 text-xl font-bold font-serif text-brand-dark">{member.name}</h3>
-        <p className="text-brand-gold font-semibold">{member.role}</p>
-        <p className="mt-2 text-sm text-brand-text-muted">{member.bio}</p>
-    </article>
+const CoreBeliefs: React.FC = () => (
+    <section className="py-20 bg-sg-light">
+        <div className="container mx-auto px-6 text-center">
+            <h2 className="text-4xl font-serif font-bold text-sg-purple mb-12">Our Core Beliefs</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                    <h3 className="text-xl font-bold text-sg-purple mb-2">The Scriptures</h3>
+                    <p className="text-gray-600">We believe the Bible is the inspired and infallible Word of God.</p>
+                </div>
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                    <h3 className="text-xl font-bold text-sg-purple mb-2">The Trinity</h3>
+                    <p className="text-gray-600">We believe in one God eternally existing in three persons: Father, Son, and Holy Spirit.</p>
+                </div>
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                    <h3 className="text-xl font-bold text-sg-purple mb-2">Salvation</h3>
+                    <p className="text-gray-600">We believe salvation is a free gift received through repentance and faith in Jesus Christ.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+);
+
+const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden text-center transform hover:-translate-y-2 transition-transform duration-300">
+        <img className="w-full h-64 object-cover object-center" src={member.imageUrl} alt={member.name} />
+        <div className="p-6">
+            <h3 className="text-2xl font-serif font-bold text-sg-purple">{member.name}</h3>
+            <p className="text-sg-gold font-semibold mb-4">{member.role}</p>
+            <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+        </div>
+    </div>
+);
+
+const PastorsProfile: React.FC<{ pastor: TeamMember }> = ({ pastor }) => (
+    <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-serif font-bold text-center text-sg-purple mb-12">Meet Our Senior Pastor</h2>
+            <div className="grid md:grid-cols-5 gap-12 items-center max-w-6xl mx-auto">
+                <div className="md:col-span-2">
+                    <img src={pastor.imageUrl} alt={pastor.name} className="rounded-lg shadow-2xl w-full" />
+                </div>
+                <div className="md:col-span-3">
+                    <h3 className="text-3xl font-serif font-bold text-sg-purple">{pastor.name}</h3>
+                    <p className="text-xl text-sg-gold font-semibold mb-4">{pastor.role}</p>
+                    <p className="text-gray-600 leading-loose">{pastor.bio}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+);
+
+
+const LeadershipTeam: React.FC = () => (
+    <section className="py-20 bg-sg-light">
+        <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-serif font-bold text-center text-sg-purple mb-12">Our Leadership Team</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                {MOCK_LEADERSHIP_TEAM.slice(1).map(member => (
+                    <TeamMemberCard key={member.name} member={member} />
+                ))}
+            </div>
+        </div>
+    </section>
 );
 
 const AboutPage: React.FC = () => {
-  useSeo({
-    title: 'About Us',
-    description: 'Learn about the history, beliefs, and leadership team of Shekinah Glory Worship Center. Meet Bishop Edward Baleke and our pastors.',
-    path: '/about'
-  });
-
-  const leadBishop = LEADERSHIP_TEAM.find(m => m.role === 'Lead Bishop');
-
-  const personSchema = LEADERSHIP_TEAM.map(member => ({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": member.name,
-    "jobTitle": member.role,
-    "description": member.bio,
-    "image": member.imageUrl,
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Shekinah Glory Worship Center"
-    }
-  }));
-
-  return (
-    <PageWrapper className="bg-brand-beige">
-      {personSchema.map((schema, index) => (
-        <StructuredData key={index} data={schema} />
-      ))}
-      <section className="text-center" aria-labelledby="about-page-title">
-        <h1 id="about-page-title" className="text-4xl font-bold font-serif text-brand-dark">About Shekinah Glory Worship Center</h1>
-        <p className="mt-4 text-xl text-brand-text-muted max-w-3xl mx-auto">Learn about our journey, our beliefs, and the people who lead our church.</p>
-      </section>
-
-      <section className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <article>
-            <h2 className="text-3xl font-bold font-serif text-brand-dark mb-4">Our History</h2>
-            <p className="text-brand-text-muted mb-4">
-                Shekinah Glory Worship Center was founded with a shared vision to create a church that felt like family. Starting in a community hall, our congregation grew through a commitment to powerful worship, biblical teaching, and genuine community service in Kampala.
-            </p>
-            <p className="text-brand-text-muted">
-                Today, we are a thriving, multicultural church that continues to be a beacon of hope and a center for spiritual growth in our city. We remain dedicated to our founding principles of loving God and loving people.
-            </p>
-        </article>
-        <article>
-            <h2 className="text-3xl font-bold font-serif text-brand-dark mb-4">Our Core Beliefs</h2>
-            <ul className="list-disc list-inside space-y-2 text-brand-text-muted">
-                <li>We believe the Bible is the inspired and infallible Word of God.</li>
-                <li>We believe in one God, eternally existing in three persons: Father, Son, and Holy Spirit.</li>
-                <li>We believe in the deity of our Lord Jesus Christ, in His virgin birth, and in His sinless life.</li>
-                <li>We believe in salvation by grace through faith in Jesus Christ.</li>
-                <li>We believe in the present ministry of the Holy Spirit.</li>
-            </ul>
-        </article>
-      </section>
-      
-      {leadBishop && <PastorMessage member={leadBishop} />}
-
-      <section className="mt-16" aria-labelledby="leadership-title">
-        <h2 id="leadership-title" className="text-3xl font-bold font-serif text-brand-dark text-center mb-12">Meet Our Leadership Team</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-            {LEADERSHIP_TEAM.map(member => (
-                <LeadershipCard key={member.name} member={member} />
-            ))}
+    const seniorPastor = MOCK_LEADERSHIP_TEAM[0];
+    return (
+        <div>
+            <PageHeader />
+            <MissionVision />
+            <PastorsProfile pastor={seniorPastor}/>
+            <CoreBeliefs />
+            <LeadershipTeam />
         </div>
-      </section>
-    </PageWrapper>
-  );
+    );
 };
 
 export default AboutPage;

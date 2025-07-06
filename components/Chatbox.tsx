@@ -11,10 +11,10 @@ const Chatbox: React.FC = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-16 h-16 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform duration-200 transform hover:scale-110"
+        className="flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#1DAE5A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200 transform hover:scale-110"
         aria-label="Chat on WhatsApp"
       >
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19.11 4.9L17.7 3.49C14.89 1.13 10.28.93 7.03 3.32c-3.1 2.29-4.22 6.24-2.88 9.71l-1.92 6.95l7.13-1.89c3.41 1.48 7.54.49 10.03-2.48c2.81-3.37 2.49-8.49-.68-11.21zM12.11 18.05c-1.27 0-2.52-.36-3.6-1.03l-4.4 1.17l1.19-4.28c-.8-1.15-1.25-2.5-1.25-3.92c0-4.32 3.51-7.83 7.83-7.83c2.09 0 4.05.81 5.54 2.3c2.25 2.25 2.62 5.92.93 8.64c-1.21 1.95-3.4 3.12-5.74 3.12z"/></svg>
+        <svg className="w-9 h-9" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.474.854-1.04 3.833 3.91-1.025.866.494z"/></svg>
       </a>
     </div>
   );

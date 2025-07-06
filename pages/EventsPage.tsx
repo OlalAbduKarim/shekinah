@@ -30,7 +30,7 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => (
                 <p className="text-gray-600 leading-relaxed">{event.description}</p>
             </div>
             <div className="mt-6">
-                <a href="#/" className="text-sg-purple font-bold hover:text-sg-gold transition-colors duration-300">Learn More &rarr;</a>
+                <span className="text-sg-purple font-bold cursor-default">Learn More &rarr;</span>
             </div>
         </div>
     </div>

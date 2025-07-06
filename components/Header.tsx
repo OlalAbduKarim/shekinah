@@ -60,7 +60,13 @@ const Header: React.FC = () => {
           </div>
 
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none z-50 relative">
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="text-white focus:outline-none z-50 relative"
+              aria-controls="mobile-menu"
+              aria-expanded={isOpen}
+              aria-label="Toggle menu"
+            >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -74,7 +80,10 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`md:hidden fixed inset-0 top-20 bg-sg-purple bg-opacity-95 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div 
+        id="mobile-menu"
+        className={`md:hidden fixed inset-0 top-20 bg-sg-purple bg-opacity-95 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      >
         <div className="h-full flex flex-col justify-center items-center text-center px-4 space-y-4">
           {NAV_LINKS.map((link) => (
             <NavLink 

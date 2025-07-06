@@ -22,9 +22,9 @@ const DevotionalCard: React.FC<{ devotional: Devotional }> = ({ devotional }) =>
             <h3 className="text-xl sm:text-2xl font-serif font-bold text-sg-purple mb-2">{devotional.title}</h3>
             <p className="text-sm text-gray-500 mb-4">{devotional.author} &bull; {devotional.date}</p>
             <p className="text-gray-600 leading-relaxed flex-grow">{devotional.excerpt}</p>
-            <a href="#/" className="text-sg-purple font-bold hover:text-sg-gold transition-colors duration-300 mt-4 self-start">
+            <span className="text-sg-purple font-bold cursor-default mt-4 self-start">
                 Read More &rarr;
-            </a>
+            </span>
         </div>
     </div>
 );

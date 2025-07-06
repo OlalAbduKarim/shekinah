@@ -33,20 +33,29 @@ const NewsletterPopup: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 font-sans">
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 font-sans"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="newsletter-popup-title"
+    >
       <div className="bg-white rounded-lg shadow-2xl p-6 sm:p-8 max-w-md w-full relative transform transition-all scale-100 opacity-100 animate-fade-in">
-        <button onClick={handleClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+        <button 
+          onClick={handleClose} 
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800" 
+          aria-label="Close newsletter signup"
+        >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         
         {isSubmitted ? (
             <div className="text-center py-4">
-                <h3 className="text-xl sm:text-2xl font-bold font-serif text-sg-purple mb-2">Thank You!</h3>
+                <h3 id="newsletter-popup-title" className="text-xl sm:text-2xl font-bold font-serif text-sg-purple mb-2">Thank You!</h3>
                 <p className="text-gray-600 text-sm sm:text-base">You've been successfully subscribed to our newsletter.</p>
             </div>
         ) : (
             <>
-                <h3 className="text-xl sm:text-2xl font-bold font-serif text-sg-purple mb-2">Stay Connected</h3>
+                <h3 id="newsletter-popup-title" className="text-xl sm:text-2xl font-bold font-serif text-sg-purple mb-2">Stay Connected</h3>
                 <p className="text-gray-600 mb-6 text-sm sm:text-base">Join our mailing list to receive weekly encouragement, event updates, and inspirational content right in your inbox.</p>
                 <form onSubmit={handleSubmit}>
                     <input 

@@ -17,12 +17,23 @@ const ImageModal: React.FC<{ image: GalleryImage | null; onClose: () => void }> 
     if (!image) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4" onClick={onClose}>
-            <div className="relative max-w-4xl max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
-                <button onClick={onClose} className="absolute -top-3 -right-3 text-white bg-sg-purple rounded-full p-2 z-10">
+        <div 
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4" 
+            onClick={onClose}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="image-modal-caption"
+        >
+            <div className="relative max-w-4xl max-h-[90vh] flex flex-col gap-2" onClick={(e) => e.stopPropagation()}>
+                <button 
+                    onClick={onClose} 
+                    className="absolute -top-3 -right-3 sm:-top-2 sm:-right-2 text-white bg-sg-purple rounded-full p-2 z-10"
+                    aria-label="Close image viewer"
+                >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
-                <img src={image.src} alt={image.alt} className="rounded-lg max-w-full max-h-[90vh] object-contain" />
+                <img src={image.src} alt={image.alt} className="rounded-lg max-w-full max-h-[85vh] object-contain" />
+                <p id="image-modal-caption" className="text-white text-center text-sm p-2">{image.alt}</p>
             </div>
         </div>
     );

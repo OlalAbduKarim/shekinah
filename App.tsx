@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -15,34 +14,37 @@ import NewsletterPopup from './components/NewsletterPopup';
 import Chatbox from './components/Chatbox';
 import useScrollToTop from './hooks/useScrollToTop';
 
-const AppContent: React.FC = () => {
+const AppLayout: React.FC = () => {
     useScrollToTop();
+    const location = useLocation();
+    const isHomePage = location.pathname === '/';
+
     return (
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/sermons" element={<SermonsPage />} />
-            <Route path="/media" element={<MediaPage />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/give" element={<GivePage />} />
-            <Route path="/devotions" element={<DevotionsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-        </Routes>
+        <div className="bg-sg-light font-sans text-gray-800">
+            <Header />
+            <main className={isHomePage ? '' : 'pt-20'}>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/sermons" element={<SermonsPage />} />
+                    <Route path="/media" element={<MediaPage />} />
+                    <Route path="/events" element={<EventsPage />} />
+                    <Route path="/give" element={<GivePage />} />
+                    <Route path="/devotions" element={<DevotionsPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                </Routes>
+            </main>
+            <Footer />
+            <NewsletterPopup />
+            <Chatbox />
+        </div>
     );
 }
 
 const App: React.FC = () => {
   return (
     <HashRouter>
-      <div className="bg-sg-light font-sans text-gray-800">
-        <Header />
-        <main className="pt-20"> {/* Padding to offset fixed header */}
-          <AppContent />
-        </main>
-        <Footer />
-        <NewsletterPopup />
-        <Chatbox />
-      </div>
+      <AppLayout />
     </HashRouter>
   );
 };

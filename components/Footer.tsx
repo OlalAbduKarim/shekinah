@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS, SOCIAL_LINKS, CONTACT_INFO } from '../constants';
@@ -7,9 +6,9 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-sg-purple text-white font-sans">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center md:text-left">
           
-          <div>
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="text-xl font-serif font-bold text-sg-gold mb-4">Shekinah Glory</h3>
             <p className="text-gray-300">Experiencing His Presence, Extending His Love.</p>
              <div className="flex space-x-4 mt-6">
@@ -36,12 +35,12 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           
-          <div>
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="text-xl font-serif font-bold text-sg-gold mb-4">Contact Us</h3>
-            <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center space-x-2"><span>📍</span><span>{CONTACT_INFO.address}</span></li>
-                <li className="flex items-center space-x-2"><span>📞</span><a href={`tel:${CONTACT_INFO.phone}`} className="hover:text-sg-gold">{CONTACT_INFO.phone}</a></li>
-                <li className="flex items-center space-x-2"><span>📧</span><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-sg-gold">{CONTACT_INFO.email}</a></li>
+            <ul className="space-y-3 text-gray-300">
+                <li className="flex items-center text-center md:text-left"><span className="hidden md:inline-block mr-2">📍</span><span>{CONTACT_INFO.address}</span></li>
+                <li className="flex items-center"><span className="hidden md:inline-block mr-2">📞</span><a href={`tel:${CONTACT_INFO.phone}`} className="hover:text-sg-gold">{CONTACT_INFO.phone}</a></li>
+                <li className="flex items-center"><span className="hidden md:inline-block mr-2">📧</span><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-sg-gold">{CONTACT_INFO.email}</a></li>
             </ul>
           </div>
 

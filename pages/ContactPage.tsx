@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { CONTACT_INFO } from '../constants';
 
 const PageHeader = () => (
-    <div className="relative h-64 bg-sg-purple flex items-center justify-center text-white text-center">
+    <div className="relative h-56 sm:h-64 bg-sg-purple flex items-center justify-center text-white text-center p-4">
         <div className="absolute inset-0 bg-black opacity-30"></div>
         <img src="https://picsum.photos/id/40/1200/400" alt="Phone and keyboard" className="w-full h-full object-cover"/>
         <div className="relative z-10">
-            <h1 className="text-5xl font-serif font-bold">Get In Touch</h1>
-            <p className="text-xl mt-2">We'd love to hear from you.</p>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold">Get In Touch</h1>
+            <p className="text-base sm:text-lg lg:text-xl mt-2">We'd love to hear from you.</p>
         </div>
     </div>
 );
@@ -36,8 +36,8 @@ const ContactForm: React.FC<{title: string; isPrayerRequest?: boolean}> = ({ tit
     }
 
     return (
-        <div className="bg-white p-8 rounded-lg shadow-xl">
-            <h3 className="text-3xl font-serif font-bold text-sg-purple mb-6">{title}</h3>
+        <div className="bg-white p-6 sm:p-8 rounded-lg shadow-xl">
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-sg-purple mb-6">{title}</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -73,16 +73,16 @@ const ContactPage: React.FC = () => {
     return (
         <div className="bg-sg-light">
             <PageHeader />
-            <section className="py-20">
+            <section className="py-16 sm:py-20">
                 <div className="container mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-start">
                         {/* Contact Info and Map */}
                         <div className="space-y-12">
                             <div>
-                                <h3 className="text-3xl font-serif font-bold text-sg-purple mb-6">Our Location</h3>
+                                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-sg-purple mb-6">Our Location</h3>
                                 <div className="space-y-4 text-gray-700 text-lg">
-                                    <p className="flex items-center"><span className="text-sg-gold mr-3">📍</span>{CONTACT_INFO.address}</p>
-                                    <p className="flex items-center"><span className="text-sg-gold mr-3">📧</span><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-sg-purple">{CONTACT_INFO.email}</a></p>
+                                    <p className="flex items-start"><span className="text-sg-gold mr-3 mt-1 flex-shrink-0">📍</span>{CONTACT_INFO.address}</p>
+                                    <p className="flex items-center"><span className="text-sg-gold mr-3">📧</span><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-sg-purple break-all">{CONTACT_INFO.email}</a></p>
                                     <p className="flex items-center"><span className="text-sg-gold mr-3">📞</span><a href={`tel:${CONTACT_INFO.phone}`} className="hover:text-sg-purple">{CONTACT_INFO.phone}</a></p>
                                     <a href={`https://wa.me/${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors">
                                         <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19.11 4.9L17.7 3.49C14.89 1.13 10.28.93 7.03 3.32c-3.1 2.29-4.22 6.24-2.88 9.71l-1.92 6.95l7.13-1.89c3.41 1.48 7.54.49 10.03-2.48c2.81-3.37 2.49-8.49-.68-11.21zM12.11 18.05c-1.27 0-2.52-.36-3.6-1.03l-4.4 1.17l1.19-4.28c-.8-1.15-1.25-2.5-1.25-3.92c0-4.32 3.51-7.83 7.83-7.83c2.09 0 4.05.81 5.54 2.3c2.25 2.25 2.62 5.92.93 8.64c-1.21 1.95-3.4 3.12-5.74 3.12z"/></svg>
@@ -104,15 +104,14 @@ const ContactPage: React.FC = () => {
                         </div>
 
                         {/* Forms */}
-                        <div className="space-y-12">
+                        <div className="space-y-12 mt-16">
                             <ContactForm title="Send Us a Message" />
                             <ContactForm title="Submit a Prayer Request" isPrayerRequest={true} />
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
-    );
-};
+                </section>
+            </div>
+        );
+    };
 
 export default ContactPage;

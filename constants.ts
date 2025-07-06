@@ -1,4 +1,3 @@
-
 import { TeamMember, Sermon, Event, Devotional, GalleryImage } from './types';
 
 export const NAV_LINKS = [
@@ -19,38 +18,38 @@ export const SOCIAL_LINKS = {
 
 export const CONTACT_INFO = {
     email: 'shekinahglorywc@gmail.com',
-    phone: '+1 (123) 456-7890',
-    whatsapp: '+1 (123) 456-7890',
-    address: '123 Glory Avenue, Faith City, FC 54321',
+    phone: '+256 761389777',
+    whatsapp: '+256 761389777',
+    address: 'Komamboga-Kisamba Road, Kampala, Uganda',
 };
 
 export const MOCK_LEADERSHIP_TEAM: TeamMember[] = [
   {
-    name: 'Apostle Dr. John Doe',
-    role: 'Senior Pastor & Founder',
-    bio: 'Apostle Dr. John Doe is the visionary founder of Shekinah Glory Worship Center. With over 30 years in ministry, his passion is to see lives transformed by the power of God\'s word and the manifestation of His glory. His teachings emphasize faith, purpose, and excellence.',
+    name: 'Bishop Edward Baleke',
+    role: 'Senior Pastor',
+    bio: 'Bishop Edward Baleke leads Shekinah Glory Worship Center with a profound passion for God\'s word and a heart for the community. He is dedicated to fostering an environment of worship where believers can experience the tangible presence of God.',
     imageUrl: 'https://picsum.photos/id/1005/400/400',
   },
   {
-    name: 'Rev. Jane Smith',
+    name: 'Pastor Grace Baleke',
     role: 'Associate Pastor',
-    bio: 'Rev. Jane Smith serves with a heart for worship and community. She oversees our worship and arts ministry, small groups, and community outreach programs, ensuring that everyone who walks through our doors feels the love of Christ.',
+    bio: 'Pastor Grace Baleke serves alongside Bishop Edward, co-laboring in the ministry. She has a special focus on family, women\'s ministry, and community outreach, helping to extend the love of Christ to all.',
     imageUrl: 'https://picsum.photos/id/1011/400/400',
   },
   {
-    name: 'Elder Michael Brown',
-    role: 'Head of Administration',
-    bio: 'Elder Michael Brown manages the operational and administrative functions of the church. His dedication and strategic oversight ensure that the church’s vision is supported by a foundation of excellence and integrity.',
+    name: 'Wyclif Wangatea',
+    role: 'Church Administrator',
+    bio: 'Wyclif Wangatea oversees the administrative and operational aspects of the church. His commitment ensures that the church functions smoothly, allowing the ministry to thrive and serve the community effectively.',
     imageUrl: 'https://picsum.photos/id/1025/400/400',
   },
 ];
 
 
 export const MOCK_SERMONS: Sermon[] = [
-  { title: 'The Power of His Presence', speaker: 'Apostle Dr. John Doe', date: '2024-07-21', videoId: 'dQw4w9WgXcQ' },
-  { title: 'Walking in Divine Purpose', speaker: 'Apostle Dr. John Doe', date: '2024-07-14', videoId: '3tmd-ClpJxA' },
-  { title: 'Unlocking Your Faith', speaker: 'Rev. Jane Smith', date: '2024-07-07', videoId: 'fC7oUOaSt7M' },
-  { title: 'The Heart of Worship', speaker: 'Rev. Jane Smith', date: '2024-06-30', videoId: 'sO4a_1_g_d8' },
+  { title: 'The Power of His Presence', speaker: 'Bishop Edward Baleke', date: '2024-07-21', videoId: 'dQw4w9WgXcQ' },
+  { title: 'Walking in Divine Purpose', speaker: 'Bishop Edward Baleke', date: '2024-07-14', videoId: '3tmd-ClpJxA' },
+  { title: 'Unlocking Your Faith', speaker: 'Pastor Grace Baleke', date: '2024-07-07', videoId: 'fC7oUOaSt7M' },
+  { title: 'The Heart of Worship', speaker: 'Pastor Grace Baleke', date: '2024-06-30', videoId: 'sO4a_1_g_d8' },
 ];
 
 export const MOCK_EVENTS: Event[] = [
@@ -81,9 +80,9 @@ export const MOCK_EVENTS: Event[] = [
 ];
 
 export const MOCK_DEVOTIONALS: Devotional[] = [
-    { title: 'A Morning Reflection on Grace', author: 'Apostle Dr. John Doe', date: 'July 22, 2024', excerpt: 'Start your day meditating on the unending and unmerited grace of God. It is more than forgiveness; it is the power to live victoriously...', imageUrl: 'https://picsum.photos/id/12/600/400' },
-    { title: 'Finding Peace in the Storm', author: 'Rev. Jane Smith', date: 'July 15, 2024', excerpt: 'Life\'s storms are inevitable, but our response is what matters. Learn how to anchor your soul in the Prince of Peace and find tranquility amidst chaos.', imageUrl: 'https://picsum.photos/id/13/600/400' },
-    { title: 'The Purpose of Your Calling', author: 'Apostle Dr. John Doe', date: 'July 8, 2024', excerpt: 'You were created on purpose, for a purpose. Discover the keys to unlocking your divine assignment and making an eternal impact.', imageUrl: 'https://picsum.photos/id/14/600/400' },
+    { title: 'A Morning Reflection on Grace', author: 'Bishop Edward Baleke', date: 'July 22, 2024', excerpt: 'Start your day meditating on the unending and unmerited grace of God. It is more than forgiveness; it is the power to live victoriously...', imageUrl: 'https://picsum.photos/id/12/600/400' },
+    { title: 'Finding Peace in the Storm', author: 'Pastor Grace Baleke', date: 'July 15, 2024', excerpt: 'Life\'s storms are inevitable, but our response is what matters. Learn how to anchor your soul in the Prince of Peace and find tranquility amidst chaos.', imageUrl: 'https://picsum.photos/id/13/600/400' },
+    { title: 'The Purpose of Your Calling', author: 'Bishop Edward Baleke', date: 'July 8, 2024', excerpt: 'You were created on purpose, for a purpose. Discover the keys to unlocking your divine assignment and making an eternal impact.', imageUrl: 'https://picsum.photos/id/14/600/400' },
 ];
 
 export const MOCK_GALLERY: GalleryImage[] = [

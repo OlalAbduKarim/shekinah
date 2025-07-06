@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const PageHeader = () => (
@@ -39,7 +38,7 @@ const GivePage: React.FC = () => {
                             icon={<svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>}
                         >
                             <p>Send your gift via Mobile Money to:</p>
-                            <p className="font-bold text-lg">+123 456 789 000</p>
+                            <p className="font-bold text-lg">+256 761389777</p>
                             <p>Name: Shekinah Glory WC</p>
                         </DonationOption>
                         

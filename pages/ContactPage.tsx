@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { CONTACT_INFO } from '../constants';
 
@@ -93,7 +92,7 @@ const ContactPage: React.FC = () => {
                             </div>
                             <div className="h-96 rounded-lg overflow-hidden shadow-lg">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.219579007469!2d-73.98785368459368!3d40.75713497932696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c64801b7%3A0x6d36c534ad5553e1!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1616422205102!5m2!1sen!2sus"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.18193822188!2d32.60251834168741!3d0.3861879003503816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177db28362a3e09d%3A0x1d4da8ac22797e82!2sKomamboga%2C%20Kampala!5e0!3m2!1sen!2sug!4v1677322987111!5m2!1sen!2sug"
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
